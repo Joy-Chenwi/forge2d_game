@@ -23,9 +23,11 @@ class MyPhysicsGame extends Forge2DGame {
   late final XmlSpriteSheet elements;
   late final XmlSpriteSheet tiles;
 
+  // TODO: Make a random background style game when loaded comes with a new background
+  //TODO: create a reload button after when the game is over
   @override
   FutureOr<void> onLoad() async {
-    final backgroundImage = await images.load('colored_grass.png');
+    final backgroundImage = await images.load('colored_shroom.png');
     final spriteSheet = await Future.wait([
       XmlSpriteSheet.load(
         imagePath: 'spritesheet_aliens.png',
