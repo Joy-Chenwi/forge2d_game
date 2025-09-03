@@ -25,9 +25,23 @@ class MyPhysicsGame extends Forge2DGame {
 
   // TODO: Make a random background style game when loaded comes with a new background
   //TODO: create a reload button after when the game is over
+
+  Map<String, String> backgrounds = {
+    '1': 'colored_shroom.png',
+    '2': 'colored_grass.png',
+    '3': 'colored_land.png',
+    '4': 'blue_desert.png',
+  };
+
+  List<String> get keys => backgrounds.keys.toList();
+  String get randomKey => keys[Random().nextInt(keys.length)];
+
+  String get randomBackground => backgrounds[randomKey]!;
+
   @override
   FutureOr<void> onLoad() async {
-    final backgroundImage = await images.load('colored_shroom.png');
+    final backgroundImage = await images.load(randomBackground);
+
     final spriteSheet = await Future.wait([
       XmlSpriteSheet.load(
         imagePath: 'spritesheet_aliens.png',
